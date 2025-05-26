@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "Proyecto-IS-Tienda-MCL-Relojes-y-Accesorios": {
+    "Angular-Prueba": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/proyecto-is-tienda-mcl-relojes-y-accesorios",
+            "outputPath": "dist/angular-prueba",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -59,10 +59,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "Proyecto-IS-Tienda-MCL-Relojes-y-Accesorios:build:production"
+              "buildTarget": "Angular-Prueba:build:production"
             },
             "development": {
-              "buildTarget": "Proyecto-IS-Tienda-MCL-Relojes-y-Accesorios:build:development"
+              "buildTarget": "Angular-Prueba:build:development"
             }
           },
           "defaultConfiguration": "development"

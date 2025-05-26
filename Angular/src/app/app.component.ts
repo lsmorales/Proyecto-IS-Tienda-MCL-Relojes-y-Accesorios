@@ -1,12 +1,14 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { HeaderComponent } from './header/header.component';
+import { CatalogoClienteComponent } from './gestion-catalogo/catalogo-clientes/catalogo-cliente/catalogo-cliente.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  standalone: true,
+  imports: [HeaderComponent, CatalogoClienteComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: [] // Opcional: puedes eliminar esta línea si no usas estilos
 })
 export class AppComponent {
-  title = 'Proyecto-IS-Tienda-MCL-Relojes-y-Accesorios';
+  title = 'Angular-Prueba';
 }
