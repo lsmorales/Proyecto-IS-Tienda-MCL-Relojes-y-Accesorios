@@ -1,0 +1,11 @@
+<div class="register-container">
+  <h2>Registro</h2>
+  <input [(ngModel)]="usuario" placeholder="Nombre de usuario" />
+  <input [(ngModel)]="correo" type="email" placeholder="Correo electrónico" />
+  <input [(ngModel)]="contrasena" type="password" placeholder="Contraseña" />
+  <button (click)="registrar()">Registrar</button>
+
+  <p *ngIf="mensaje" class="mensaje">{{ mensaje }}</p>
+  <p>¿Ya tienes cuenta?</p>
+  <a href="/login"> Inicia sesión</a>
+</div>

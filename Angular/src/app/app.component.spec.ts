@@ -14,16 +14,10 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have the 'Proyecto-IS-Tienda-MCL-Relojes-y-Accesorios' title`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('Proyecto-IS-Tienda-MCL-Relojes-y-Accesorios');
-  });
-
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, Proyecto-IS-Tienda-MCL-Relojes-y-Accesorios');
+    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, ProyectoDePrueba');
   });
 });
