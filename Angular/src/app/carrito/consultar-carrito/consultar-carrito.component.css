@@ -1,0 +1,54 @@
+/* consultar-carrito.component.css */
+
+:host {
+  display: block;
+  padding: 30px;
+  max-width: 900px;
+  margin: 0 auto;
+  font-family: Arial, sans-serif;
+}
+
+h2 {
+  text-align: center;
+  color: #2c3e50;
+  margin-bottom: 25px;
+}
+
+.productos-contenedor {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.productos-contenedor img {
+  width: 150px;
+  height: auto;
+  border-radius: 8px;
+  transition: transform 0.2s ease;
+}
+
+.productos-contenedor img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.boton-ok {
+  display: block;
+  margin: 30px auto 0 auto;
+  padding: 12px 30px;
+  background-color: navy;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.boton-ok:hover {
+  background-color: #001f4d;
+  transform: scale(1.03);
+}
