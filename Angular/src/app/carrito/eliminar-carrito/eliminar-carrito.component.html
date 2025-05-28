@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eliminar productos del carrito</title>
+  <link rel="stylesheet" href="eliminar-carrito.css">
+</head>
+<body>
+
+  <!-- Si no hay productos en el carrito -->
+  <div *ngIf="carrito.items.length === 0">
+    <p>No hay productos en el carrito para eliminar</p>
+    <button>
+      Aceptar
+    </button>
+  </div>
+  <!-- Si presiona Aceptar, muestra la interfaz carrito.component.html -->
+
+  <!-- Si hay productos en el carrito -->
+  <div *ngIf="carrito.items.length > 0">
+    <h2>Seleccione los productos que desea eliminar del carrito</h2>
+    <h3>Tu carrito de compras</h3>
+
+    <div>
+      <div *ngFor="let producto of carrito.items">
+        <img [src]="producto.imagenUrl" alt="{{ producto.nombre }}">
+      </div>
+    </div>
+
+    <div>
+      <button>
+        Cancelar
+      </button>
+    </div>
+  </div>
+  <!-- Si presiona Cancelar, muestra la interfaz carrito.component.html -->
+
+</body>
+</html>
