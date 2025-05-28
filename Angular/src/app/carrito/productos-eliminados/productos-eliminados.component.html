@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Productos Eliminados</title>
+  <link rel="stylesheet" href="productos-eliminados.component.css">
+</head>
+<body>
+
+  <div *ngIf="eliminacionConfirmada && !mostrarCarritoActualizado" class="mensaje-eliminacion">
+    <p>Los productos seleccionados fueron eliminados del carrito</p>
+    <button class="boton-aceptar" (click)="mostrarCarritoActualizado = true">
+      Aceptar
+    </button>
+  </div>
+
+</body>
+</html>
