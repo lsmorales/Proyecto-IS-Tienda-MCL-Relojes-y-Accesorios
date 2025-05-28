@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carrito actualizado</title>
+  <link rel="stylesheet" href="consultar-carrito-tras-eliminacion.component.css">
+</head>
+<body>
+
+  <div *ngIf="carritoActualizado.length > 0">
+    <h2>Tu carrito de compras actualizado</h2>
+    <div>
+      <div *ngFor="let producto of carritoActualizado">
+        <img [src]="producto.imagenUrl" [alt]="producto.nombre">
+        <p>{{ producto.nombre }}</p>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="carritoActualizado.length === 0">
+    <p>El carrito está vacío.</p>
+  </div>
+
+</body>
+</html>
