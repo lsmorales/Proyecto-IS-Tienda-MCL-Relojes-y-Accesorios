@@ -1,0 +1,34 @@
+/* seleccion-carrito.component.css */
+
+.mensaje-seleccion {
+  background-color: #fffacd; 
+  color: black;
+  padding: 20px;
+  margin-top: 30px;
+  border-radius: 8px;
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+.botones-seleccion {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.boton-seleccion {
+  background-color: black;
+  color: white;
+  padding: 10px 25px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.boton-seleccion:hover {
+  background-color: #333;
+}
