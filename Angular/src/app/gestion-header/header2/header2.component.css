@@ -20,7 +20,6 @@ header{
   position: sticky;
   top: 0;
   z-index: 1000;
-  border-radius: 6px;
 }
 
 /* Logo como fondo */
@@ -28,7 +27,7 @@ header{
   display: block;
   width: 100px;
   height: 50px;
-  background: url('/src/assets/carrito.png') no-repeat center center;
+  background: url('../../assets/Satori.jpg') no-repeat center center;
   background-size: contain;
   background-color: white;
   text-indent: -9999px;
@@ -76,7 +75,7 @@ header{
   display: block;
   width: 32px;
   height: 32px;
-  background: url('/src/assets/carrito.png') no-repeat center center;
+  background: url('../../assets/carrito.png') no-repeat center center;
   background-size: contain;
   background-color: white;
   text-indent: -9999px;

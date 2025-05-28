@@ -1,19 +1,15 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { DatosInicialesService } from './servicios/datos-iniciales.service';
-import { CommonModule } from '@angular/common';
-import { HeaderComponent } from './header/header.component';
+import { HeaderComponent } from './gestion-header/header/header.component';
 import { CatalogoClienteComponent } from './gestion-catalogo/catalogo-clientes/catalogo-cliente/catalogo-cliente.component';
+import { CatalogoAdministradorComponent } from "./gestion-catalogo/catalogo-administradores/catalogo-administrador/catalogo-administrador.component";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, CommonModule, CatalogoClienteComponent, HeaderComponent],
+  standalone: true,
+  imports: [HeaderComponent, CatalogoAdministradorComponent],
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: [] // Opcional: puedes eliminar esta línea si no usas estilos
 })
 export class AppComponent {
-  constructor(private datosInicialesService: DatosInicialesService) {
-    this.datosInicialesService.cargarAdministrador();
-  }
-  title = 'Proyecto-IS-Tienda-MCL-Relojes-y-Accesorios';
+  title = 'Angular-Prueba';
 }

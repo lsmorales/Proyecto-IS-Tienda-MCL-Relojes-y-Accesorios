@@ -1,13 +1,23 @@
+<!-- src/app/catalogo-cliente/catalogo-cliente.component.html -->
 <div class="catalogo-productos">
-    <div class="producto">
-      <img src="imagenes/producto2.jpg" class="imagen-producto">
-      <h3 class="nombre-producto">reloj</h3>
-      <div class="descripcion-producto">descripcion</div>
-      <div class="tipo-producto">reloj</div>    
-      <div class="precio-container">
-        <span class="precio-actual">23,49 €</span>
+  <div class="product-card" *ngFor="let producto of productos">
+    <div class="product-image-container">
+      <img [src]="producto.imagen || 'assets/imagen-placeholder.jpg'" [alt]="producto.nombre" class="product-image">
+    </div>
+    <div class="product-details">
+      <h3 class="product-title">{{ producto.nombre }}</h3>
+      <p class="product-description">{{ producto.descripcion }}</p>
+      <div class="product-meta">
+        <span class="product-type">{{ producto.tipo }}</span>
+        <span class="product-price">{{ formatearPrecio(producto.precio) }}</span>
       </div>
-      <button class="btn-agregar-carrito">Añadir al carrito</button>
-    </div>  
-    <!-- Más productos según sea necesario -->
+    </div>
+    <button class="btn-agregar-carrito">
+      <i class="fas fa-cart-plus"></i> Añadir al carrito
+    </button>
   </div>
+
+  <div *ngIf="productos.length === 0" class="no-products">
+    <p>No hay productos disponibles en este momento.</p>
+  </div>
+</div>
