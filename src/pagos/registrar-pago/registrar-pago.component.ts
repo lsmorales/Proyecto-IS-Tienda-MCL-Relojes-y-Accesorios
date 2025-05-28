@@ -20,6 +20,11 @@ export class RegistrarPagoComponent {
   constructor(private pagoService: PagoService) {}
 
   enviarPago() {
+    const esValido = /^[0-9]{12,20}$/.test(this.referencia);
+  if (!esValido) {
+    alert('El número de referencia debe tener entre 12 y 20 dígitos numéricos.');
+    return;
+  }
     this.registrarPago();
   }
 

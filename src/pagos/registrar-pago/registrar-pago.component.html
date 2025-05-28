@@ -34,8 +34,9 @@
         type="text"
         name="referencia"
         [(ngModel)]="referencia"
-        placeholder="Ingresa el número de referencia"
+        pattern="^[0-9]{20,30}$"
         required
+        placeholder="Ingresa el numero de referencia del pago"
       />
 
       <button type="submit">Enviar</button>

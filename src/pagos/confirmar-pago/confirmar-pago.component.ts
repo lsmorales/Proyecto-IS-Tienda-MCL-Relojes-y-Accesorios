@@ -19,8 +19,8 @@ export class ConfirmarPagoComponent implements OnInit {
   constructor(private pagoService: PagoService) {}
 
   ngOnInit(): void {
-    this.pagoService.pagos$.subscribe(pagos => {
-      this.pagosPendientes = pagos.filter(p => p.estado === 'pendiente');
+    this.pagoService.pagos$.subscribe((pagos: Pago[]) => {
+    this.pagosPendientes = pagos.filter((p: Pago) => p.estado === 'pendiente');
     });
   }
 
