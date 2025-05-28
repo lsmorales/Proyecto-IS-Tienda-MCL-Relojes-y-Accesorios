@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Seleccionar productos para eliminar</title>
+  <link rel="stylesheet" href="seleccion-carrito-eliminacion.component.css">
+</head>
+<body>
+
+  <!-- Si hay productos en el carrito -->
+  <div *ngIf="carrito.items.length > 0">
+    <h2>Seleccione los productos que desea eliminar del carrito</h2>
+    <h3>Tu carrito de compras</h3>
+
+    <div class="productos-container">
+      <div *ngFor="let producto of carrito.items">
+        <label class="producto-label">
+          <input type="checkbox" [(ngModel)]="producto.seleccionado">
+          <img [src]="producto.imagenUrl" alt="{{ producto.nombre }}">
+        </label>
+      </div>
+    </div>
+
+    <!-- Lista dinámica de productos seleccionados -->
+    <div *ngIf="carrito.items.some(p => p.seleccionado)" class="seleccionados-container">
+      <h4>Productos seleccionados para eliminar:</h4>
+      <ul>
+        <li *ngFor="let producto of carrito.items" [hidden]="!producto.seleccionado">
+          {{ producto.nombre }}
+        </li>
+      </ul>
+
+      <!-- Botones Aceptar y Cancelar -->
+      <div class="botones-accion">
+        <button class="boton-aceptar">Aceptar</button>
+        <button class="boton-cancelar">Cancelar</button>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
+
+<!-- Si presiona Aceptar, muestra la interfaz productos-eliminados.component.html -->
+<!-- Si presiona Cancelar, muestra la interfaz consultar-carrito.component.html -->
