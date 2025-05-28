@@ -1,0 +1,27 @@
+.mensaje-contenedor {
+  background-color: royalblue;
+  color: white;
+  padding: 20px;
+  margin-top: 30px;
+  border-radius: 8px;
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+.boton-aceptar {
+  background-color: white;
+  color: royalblue;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  margin-top: 15px;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.boton-aceptar:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
