@@ -1,0 +1,51 @@
+/* consultar-carrito-tras-eliminacion.component.css */
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  margin: 0;
+  padding: 30px;
+  text-align: center;
+}
+
+h2 {
+  color: #333;
+  margin-bottom: 25px;
+}
+
+div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+div > div {
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  width: 180px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+img {
+  width: 150px;
+  height: auto;
+  border-radius: 8px;
+}
+
+p {
+  margin-top: 10px;
+  font-weight: bold;
+  color: #555;
+}
+
+p.empty-message {
+  background-color: #fffacd;
+  padding: 15px;
+  border-radius: 8px;
+  color: black;
+  display: inline-block;
+}
+
