@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="consultar-carrito.component.css">
+</head>
+<body>
+  <header>
+    <h1>Tu carrito de compras</h1>
+  </header>
+  <main>
+    <!-- Lista de imágenes de productos -->
+<div>
+  <div *ngFor="let producto of carrito.items">
+    <img [src]="producto.imagenUrl" alt="{{ producto.nombre }}">
+  </div>
+</div>
+
+<!-- Botón OK centrado -->
+<div>
+  <button>
+    OK
+  </button>
+</div>
+<!-- Si presiona el botón OK, muestra la interfaz de agregar-carrito.component.html -->
+
+  </main>
+  <footer></footer>
+</body>
+</html>
