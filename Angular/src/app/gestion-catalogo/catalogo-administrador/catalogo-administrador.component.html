@@ -1,0 +1,123 @@
+<div class="catalogo-admin-container">
+  <!-- Encabezado del catálogo -->
+  <div class="catalogo-header">
+    <button class="btn-agregar" (click)="abrirModal()">
+      <i class="fas fa-plus"></i> Agregar Producto
+    </button>
+  </div>
+
+  <!-- Listado de productos -->
+  <div class="product-grid">
+    <div *ngFor="let producto of productos" class="product-card">
+      <div class="product-image-container">
+        <img [src]="producto.imagen || 'assets/imagenes/default-product.png'" 
+             [alt]="producto.nombre" 
+             class="product-image"
+             (error)="producto.imagen = 'assets/imagenes/default-product.png'">
+      </div>
+      <div class="product-details">
+        <h3 class="product-title">{{producto.nombre}}</h3>
+        <p class="product-description">{{producto.descripcion}}</p>
+        <div class="product-meta">
+          <span class="product-type">{{producto.tipo}}</span>
+          <span class="product-price">{{producto.precio | currency:'USD':'symbol':'1.2-2'}}</span>
+        </div>
+      </div>
+      <div class="product-actions">
+        <button class="btn-edit" (click)="abrirModal(producto)">
+          <i class="fas fa-edit"></i> Editar
+        </button>
+        <button class="btn-delete" (click)="eliminarProducto(producto.id)">
+          <i class="fas fa-trash-alt"></i> Eliminar
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal para agregar/editar producto -->
+  <div class="modal-overlay" [class.active]="mostrarModal" (click)="cerrarModal()"></div>
+  
+  <div class="modal" [class.active]="mostrarModal">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <span class="close-modal" (click)="cerrarModal()">&times;</span>
+      
+      <h2>{{modoEdicion ? 'Editar Producto' : 'Agregar Nuevo Producto'}}</h2>
+      
+      <form (ngSubmit)="guardarProducto()" #productoForm="ngForm">
+        <div class="form-group">
+          <label for="nombre">Nombre del Producto </label>
+          <input type="text" id="nombre" 
+                 [(ngModel)]="nuevoProducto.nombre" 
+                 name="nombre" 
+                 required
+                 placeholder="Ej: Reloj Coleccionable">
+        </div>
+        
+        <div class="form-group">
+          <label for="descripcion">Descripción </label>
+          <textarea id="descripcion" 
+                    [(ngModel)]="nuevoProducto.descripcion" 
+                    name="descripcion" 
+                    required
+                    rows="3"
+                    placeholder="Descripción detallada del producto"></textarea>
+        </div>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label for="tipo">Tipo de Producto </label>
+            <select id="tipo" 
+                    [(ngModel)]="nuevoProducto.tipo" 
+                    name="tipo" 
+                    required>
+              <option value="" disabled selected>Seleccione un tipo</option>
+              <option *ngFor="let tipo of tiposProductos" [value]="tipo.value">
+                {{tipo.label}}
+              </option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="precio">Precio ($) </label>
+            <input type="number" id="precio" 
+                   [(ngModel)]="nuevoProducto.precio" 
+                   name="precio" 
+                   required
+                   min="0"
+                   step="0.01"
+                   placeholder="0.00">
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label for="imagen">Imagen del Producto</label>
+          <div class="image-upload-container">
+            <label class="image-upload-label" *ngIf="!nuevoProducto.imagen">
+              <i class="fas fa-cloud-upload-alt"></i>
+              <span>Seleccionar imagen...</span>
+              <input type="file" id="imagen" 
+                     (change)="onFileSelected($event)" 
+                     accept="image/*" 
+                     class="image-upload-input">
+            </label>
+            <div class="image-preview" *ngIf="nuevoProducto.imagen">
+              <img [src]="nuevoProducto.imagen" alt="Vista previa">
+              <button type="button" class="btn-change-image" (click)="nuevoProducto.imagen = ''">
+                Cambiar imagen
+              </button>
+            </div>
+          </div>
+        </div>
+        
+        <div class="form-actions">
+          <button type="button" class="btn-cancel" (click)="cerrarModal()">
+            Cancelar
+          </button>
+          <button type="submit" class="btn-submit">
+            {{modoEdicion ? 'Actualizar Producto' : 'Agregar Producto'}}
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

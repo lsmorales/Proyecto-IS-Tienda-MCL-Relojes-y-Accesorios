@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Producto } from '../../../models/producto.model';
-import { ProductoService } from '../../../servicios/producto.service';
+import { Producto } from '../../models/producto.model';
+import { ProductoService } from '../../servicios/producto.service';
 
 @Component({
   selector: 'app-catalogo-administrador',

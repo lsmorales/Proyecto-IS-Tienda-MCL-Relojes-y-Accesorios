@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { AutenticacionService } from '../../servicios/autenticacion.service';
 import { CommonModule } from '@angular/common';
-import { CatalogoAdministradorComponent } from '../catalogo-administradores/catalogo-administrador/catalogo-administrador.component';
-import { CatalogoClienteComponent } from '../catalogo-clientes/catalogo-cliente/catalogo-cliente.component';
+import { CatalogoAdministradorComponent } from '../catalogo-administrador/catalogo-administrador.component';
+import { CatalogoClienteComponent } from '../catalogo-cliente/catalogo-cliente.component';
 import { RouterModule } from '@angular/router'; // Añade esto
 
 @Component({
@@ -10,9 +10,9 @@ import { RouterModule } from '@angular/router'; // Añade esto
   standalone: true,
   imports: [
     CommonModule,
-    RouterModule, // Añade esto
     CatalogoAdministradorComponent,
-    CatalogoClienteComponent
+    CatalogoClienteComponent,
+    RouterModule // Añade esto   
   ],
   templateUrl: './control-catalogo.component.html',
   styleUrls: ['./control-catalogo.component.css']
