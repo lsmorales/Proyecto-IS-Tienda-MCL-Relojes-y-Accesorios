@@ -36,8 +36,33 @@
         [(ngModel)]="referencia"
         pattern="^[0-9]{20,30}$"
         required
-        placeholder="Ingresa el numero de referencia del pago"
+        placeholder="Ingresa el número de referencia del pago"
       />
+
+      <label for="imagen">Captura del Comprobante de Pago (obligatorio):</label>
+<div
+  class="imagen-upload"
+  (click)="fileInput.click()"
+  style="border: 2px dashed #6c757d; padding: 20px; text-align: center; cursor: pointer; border-radius: 8px;"
+>
+  <span *ngIf="!imagenBase64">Seleccionar imagen...</span>
+  <img
+    *ngIf="imagenBase64"
+    [src]="imagenBase64"
+    alt="Imagen seleccionada"
+    style="max-width: 100%; max-height: 200px; margin-top: 10px; border-radius: 4px;"
+  />
+</div>
+<input
+  #fileInput
+  type="file"
+  (change)="onFileSelected($event)"
+  accept="image/*"
+  style="display: none"
+/>
+      <div *ngIf="!imagenBase64" style="color: red; font-size: 0.9em; margin-top: 5px;">
+        ⚠️ No has subido una captura del comprobante.
+      </div>
 
       <button type="submit">Enviar</button>
     </form>
@@ -49,6 +74,7 @@
     </a>
   </div>
 </div>
+
 
 
 
