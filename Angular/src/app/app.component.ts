@@ -2,11 +2,9 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
+  standalone: true,
   selector: 'app-root',
   imports: [RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  template: `<router-outlet></router-outlet>`
 })
-export class AppComponent {
-  title = 'Proyecto-IS-Tienda-MCL-Relojes-y-Accesorios';
-}
+export class AppComponent {}
