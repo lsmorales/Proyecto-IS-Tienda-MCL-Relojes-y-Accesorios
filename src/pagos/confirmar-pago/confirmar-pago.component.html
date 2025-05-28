@@ -1,0 +1,20 @@
+<h2>Confirmar Pagos</h2>
+
+<ul>
+  <li *ngFor="let pago of pagosPendientes" class="pago-card">
+    <p><strong>Usuario:</strong> {{ pago.usuario }}</p>
+    <p><strong>Método:</strong> {{ pago.metodo }}</p>
+    <p><strong>Monto:</strong> {{ pago.monto }}</p>
+    <p><strong>Referencia:</strong> {{ pago.referencia }}</p>
+
+    <button (click)="confirmar(pago.id)">Confirmar</button>
+    <button class="rechazar" (click)="toggleRechazo(pago.id)">Rechazar</button>
+
+    <div *ngIf="selectedId === pago.id">
+      <input [(ngModel)]="razonRechazo" placeholder="Razón del rechazo" />
+      <button (click)="rechazar(pago.id)">Enviar rechazo</button>
+    </div>
+  </li>
+</ul>
+
+

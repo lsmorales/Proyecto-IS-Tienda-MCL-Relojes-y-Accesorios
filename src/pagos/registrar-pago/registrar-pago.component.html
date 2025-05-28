@@ -1,0 +1,55 @@
+<div class="container">
+  <h1>Registrar Pago</h1>
+
+  <div class="card">
+    <label for="metodo">Método de Pago:</label>
+    <select id="metodo" name="metodo" [(ngModel)]="metodoSeleccionado">
+      <option value="pago_movil">Pago Móvil</option>
+      <option value="transferencia">Transferencia</option>
+    </select>
+
+    <div *ngIf="metodoSeleccionado === 'pago_movil'" class="info-pago">
+      <p><strong>Banco:</strong> Banco del Pueblo</p>
+      <p><strong>Teléfono:</strong> 0414-1234567</p>
+      <p><strong>CI/RIF:</strong> V12345678</p>
+    </div>
+
+    <div *ngIf="metodoSeleccionado === 'transferencia'" class="info-pago">
+      <p><strong>Banco:</strong> Banco Nacional</p>
+      <p><strong>Nro de Cuenta:</strong> 0102-0123-4567-8901</p>
+      <p><strong>Titular:</strong> MCL Relojes y Accesorios</p>
+      <p><strong>CI/RIF:</strong> J123456789</p>
+    </div>
+
+    <form (ngSubmit)="enviarPago()" #pagoForm="ngForm">
+      <div class="monto-box">
+        <label for="monto">Monto a Pagar:</label>
+        <input id="monto" type="number" [value]="montoSistema" disabled />
+      </div>
+
+      <p><strong>Una vez hecho el pago, ingresa el número de referencia aquí:</strong></p>
+      <label for="referencia">Número de Referencia:</label>
+      <input
+        id="referencia"
+        type="text"
+        name="referencia"
+        [(ngModel)]="referencia"
+        placeholder="Ingresa el número de referencia"
+        required
+      />
+
+      <button type="submit">Enviar</button>
+    </form>
+  </div>
+
+  <div class="admin-btn-container">
+    <a href="/confirmar-pago">
+      <button class="admin-btn">Ir a Confirmar Pagos (Admin)</button>
+    </a>
+  </div>
+</div>
+
+
+
+
+
