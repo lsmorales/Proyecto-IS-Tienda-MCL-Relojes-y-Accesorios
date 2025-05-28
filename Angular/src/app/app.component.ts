@@ -1,14 +1,18 @@
 import { Component } from '@angular/core';
-import { HeaderComponent } from './gestion-header/header/header.component';
-import { CatalogoClienteComponent } from './gestion-catalogo/catalogo-clientes/catalogo-cliente/catalogo-cliente.component';
-import { CatalogoAdministradorComponent } from "./gestion-catalogo/catalogo-administradores/catalogo-administrador/catalogo-administrador.component";
+import { RouterOutlet } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http'; // Añade esto si usas HTTP
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [HeaderComponent, CatalogoAdministradorComponent],
+  imports: [
+    CommonModule,
+    RouterOutlet,
+    HttpClientModule // Añade esto si es necesario
+  ],
   templateUrl: './app.component.html',
-  styleUrls: [] // Opcional: puedes eliminar esta línea si no usas estilos
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
   title = 'Angular-Prueba';

@@ -1,12 +1,19 @@
 import { Component } from '@angular/core';
+import { AutenticacionService } from '../../servicios/autenticacion.service';
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-header3',
   standalone: true,
-  imports: [],
+  imports: [CommonModule, RouterModule],
   templateUrl: './header3.component.html',
-  styleUrl: './header3.component.css'
+  styleUrls: ['./header3.component.css']
 })
 export class Header3Component {
+  constructor(public auth: AutenticacionService) {}
 
+  cerrarSesion() {
+    this.auth.cerrarSesion();
+  }
 }

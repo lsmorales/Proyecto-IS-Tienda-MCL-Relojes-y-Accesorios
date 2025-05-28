@@ -1,1 +1,5 @@
-<p>control-catalogo works!</p>
+@if (auth.esAdmin()) {
+  <app-catalogo-administrador></app-catalogo-administrador>
+} @else {
+  <app-catalogo-cliente></app-catalogo-cliente>
+}

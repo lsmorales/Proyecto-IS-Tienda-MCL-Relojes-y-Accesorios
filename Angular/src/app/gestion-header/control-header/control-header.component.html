@@ -1,1 +1,7 @@
-<p>control-header works!</p>
+@if (!auth.estaAutenticado()) {
+  <app-header></app-header>
+} @else if (auth.esAdmin()) {
+  <app-header3></app-header3>
+} @else {
+  <app-header2></app-header2>
+}

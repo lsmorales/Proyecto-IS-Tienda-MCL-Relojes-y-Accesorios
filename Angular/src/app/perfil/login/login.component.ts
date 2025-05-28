@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgIf } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { AutenticacionService } from '../../servicios/autenticacion.service';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,10 @@ export class LoginComponent {
   contrasena: string = '';
   mensajeError: string = '';
 
-  constructor(private router: Router) {}
+   constructor(
+    private router: Router,
+    private auth: AutenticacionService
+  ) {}
 
   iniciarSesion() {
     const usuarios = JSON.parse(localStorage.getItem('usuarios') || '[]');
@@ -33,13 +37,11 @@ export class LoginComponent {
 
     if (usuarioEncontrado) {
       localStorage.setItem('usuarioActivo', JSON.stringify(usuarioEncontrado));
-      if (usuarioEncontrado.rol === 'admin') {
-        this.router.navigate(['/catalogo/admin']);
-      } else {
-        this.router.navigate(['/catalogo/usuario']);
-      }
+      if (this.auth.iniciarSesion(this.usuario, this.contrasena)) {
+      this.router.navigate(['/']);
     } else {
       this.mensajeError = 'Usuario o contraseña incorrectos';
     }
+  }
   }
 }
