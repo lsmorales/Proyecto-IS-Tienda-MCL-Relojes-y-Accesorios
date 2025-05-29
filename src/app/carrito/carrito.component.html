@@ -1,0 +1,19 @@
+<h2>THIS IS A FLAG</h2>
+
+<div class="carrito-container">
+  <h2>Carrito de Compras</h2>
+
+  <div *ngIf="productos.length === 0">Tu carrito está vacío.</div>
+
+  <div class="producto" *ngFor="let producto of productos">
+    <img [src]="producto.imagen" alt="{{ producto.nombre }}">
+    <div class="info">
+      <h3>{{ producto.nombre }}</h3>
+      <p>{{ producto.descripcion }}</p>
+      <p><strong>${{ producto.precio }}</strong></p>
+      <button (click)="eliminarProducto(producto.id)">Eliminar</button>
+    </div>
+  </div>
+
+  <button *ngIf="productos.length > 0" (click)="irAPagos()" class="btn-pagar">Pagar</button>
+</div>
