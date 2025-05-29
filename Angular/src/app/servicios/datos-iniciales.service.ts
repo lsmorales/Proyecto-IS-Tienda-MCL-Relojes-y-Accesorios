@@ -19,6 +19,7 @@ export class DatosInicialesService {
         correo: 'admin@tienda.com',
         contrasena: 'admin123',
         rol: 'admin',
+        carrito: []
       });
 
       localStorage.setItem('usuarios', JSON.stringify(usuarios));

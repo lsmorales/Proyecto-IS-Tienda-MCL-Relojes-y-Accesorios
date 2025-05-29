@@ -6,17 +6,36 @@ import { Producto } from '../models/producto.model';
   providedIn: 'root'
 })
 export class CarritoService {
-  private readonly STORAGE_KEY = 'carrito';
 
   constructor() {}
 
+  private getUsuarioActivo(): any {
+    const user = localStorage.getItem('usuarioActivo');
+    return user ? JSON.parse(user) : null;
+  }
+
+  private guardarUsuarioActivo(usuario: any): void {
+    localStorage.setItem('usuarioActivo', JSON.stringify(usuario));
+
+    const usuarios = JSON.parse(localStorage.getItem('usuarios') || '[]');
+    const index = usuarios.findIndex((u: any) => u.usuario === usuario.usuario);
+    if (index !== -1) {
+      usuarios[index] = usuario;
+      localStorage.setItem('usuarios', JSON.stringify(usuarios));
+    }
+  }
+
   getCarrito(): Producto[] {
-    const carritoString = localStorage.getItem(this.STORAGE_KEY);
-    return carritoString ? JSON.parse(carritoString) : [];
+    const usuario = this.getUsuarioActivo();
+    return usuario?.carrito || [];
   }
 
   private guardarCarrito(productos: Producto[]): void {
-    localStorage.setItem(this.STORAGE_KEY, JSON.stringify(productos));
+    const usuario = this.getUsuarioActivo();
+    if (usuario) {
+      usuario.carrito = productos;
+      this.guardarUsuarioActivo(usuario);
+    }
   }
 
   agregarProducto(producto: Producto): void {
@@ -43,28 +62,23 @@ export class CarritoService {
 
   calcularTotal(): number {
     return this.getCarrito().reduce((total, producto) => {
-      const cantidad = producto.cantidad || 1;
-      return total + producto.precio * cantidad;
+      return total + producto.precio * (producto.cantidad || 1);
     }, 0);
   }
 
   getCantidadItems(): number {
-    return this.getCarrito().reduce((sum, producto) => {
-      return sum + (producto.cantidad || 1);
-    }, 0);
+    return this.getCarrito().reduce((sum, producto) => sum + (producto.cantidad || 1), 0);
   }
 
   actualizarCantidad(id: number, nuevaCantidad: number): void {
     const carrito = this.getCarrito();
-    const index = carrito.findIndex(p => p.id === id);
-
-    if (index !== -1) {
-      carrito[index].cantidad = nuevaCantidad > 0 ? nuevaCantidad : 1;
+    const producto = carrito.find(p => p.id === id);
+    if (producto) {
+      producto.cantidad = nuevaCantidad > 0 ? nuevaCantidad : 1;
       this.guardarCarrito(carrito);
     }
   }
 
-  // NUEVO: Incrementar cantidad
   incrementarCantidad(id: number): void {
     const carrito = this.getCarrito().map(p => {
       if (p.id === id) {
@@ -75,14 +89,13 @@ export class CarritoService {
     this.guardarCarrito(carrito);
   }
 
-  // NUEVO: Disminuir cantidad
   disminuirCantidad(id: number): void {
-    let carrito = this.getCarrito().map(p => {
+    const carrito = this.getCarrito().map(p => {
       if (p.id === id) {
         p.cantidad = (p.cantidad || 1) - 1;
       }
       return p;
-    }).filter(p => (p.cantidad || 0) > 0); // elimina si llega a 0
+    }).filter(p => (p.cantidad || 0) > 0);
     this.guardarCarrito(carrito);
   }
 }

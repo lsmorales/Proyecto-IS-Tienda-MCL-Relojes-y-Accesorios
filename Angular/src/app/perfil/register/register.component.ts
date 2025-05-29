@@ -40,8 +40,10 @@ export class RegisterComponent {
       usuario: this.usuario,
       correo: this.correo,
       contrasena: this.contrasena,
-      rol: 'usuario'
+      rol: 'usuario',
+      carrito: []
     };
+
 
     usuarios.push(nuevoUsuario);
     localStorage.setItem('usuarios', JSON.stringify(usuarios));
