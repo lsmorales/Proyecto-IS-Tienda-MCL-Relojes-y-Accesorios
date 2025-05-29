@@ -1,0 +1,43 @@
+<div class="carrito-container">
+  <div class="carrito-header">
+    <h2>Tu Carrito de Compras</h2>
+    <span class="cantidad-items">{{productos.length}} items</span>
+  </div>
+
+  <div *ngIf="productos.length === 0" class="carrito-vacio">
+    <p>Tu carrito está vacío</p>
+    <a routerLink="/" class="btn-seguir-comprando">Seguir comprando</a>
+  </div>
+
+  <div *ngIf="productos.length > 0">
+    <div class="productos-carrito">
+      <div *ngFor="let producto of productos" class="producto-carrito">
+        <div class="producto-imagen">
+          <img [src]="producto.imagen || 'assets/imagenes/default-product.png'" 
+               [alt]="producto.nombre">
+        </div>
+        <div class="producto-info">
+          <h3>{{producto.nombre}}</h3>
+          <p>{{producto.descripcion}}</p>
+          <span class="producto-precio">{{producto.precio | currency:'USD':'symbol':'1.2-2'}}</span>
+        </div>
+        <button class="btn-eliminar" (click)="eliminarProducto(producto.id)">
+          <i class="fas fa-trash-alt"></i> Eliminar
+        </button>
+      </div>
+    </div>
+
+    <div class="carrito-total">
+      <h3>Total: {{calcularTotal() | currency:'USD':'symbol':'1.2-2'}}</h3>
+    </div>
+
+    <div class="carrito-acciones">
+      <a routerLink="/" class="btn-seguir-comprando">
+        <i class="fas fa-arrow-left"></i> Seguir comprando
+      </a>
+      <button class="btn-pagar" disabled>
+        <i class="fas fa-credit-card"></i> Proceder con el pago
+      </button>
+    </div>
+  </div>
+</div>

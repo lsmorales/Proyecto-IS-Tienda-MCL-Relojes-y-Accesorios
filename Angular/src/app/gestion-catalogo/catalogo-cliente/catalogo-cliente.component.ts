@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { Producto } from '../../models/producto.model';
 import { ProductoService } from '../../servicios/producto.service';
+import { CarritoService } from '../../servicios/carrito.service';
 
 
 @Component({
@@ -15,7 +16,10 @@ import { ProductoService } from '../../servicios/producto.service';
 export class CatalogoClienteComponent implements OnInit {
   productos: Producto[] = [];
 
-  constructor(private productoService: ProductoService) {}
+  constructor(
+    private productoService: ProductoService,
+    private carritoService: CarritoService
+  ) {}
 
   ngOnInit(): void {
     this.cargarProductos();
@@ -27,5 +31,9 @@ export class CatalogoClienteComponent implements OnInit {
 
   formatearPrecio(precio: number): string {
     return precio.toFixed(2).replace('.', ',') + ' €';
+  }
+  agregarAlCarrito(producto: Producto): void {
+    this.carritoService.agregarProducto(producto);
+    alert(`${producto.nombre} añadido al carrito`);
   }
 }

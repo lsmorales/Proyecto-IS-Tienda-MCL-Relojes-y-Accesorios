@@ -10,6 +10,11 @@
   <div class="right-section">
     <a routerLink="/login">Inicia sesión</a>
     <a routerLink="/register">Regístrate</a>
-    <a href="#" id="cart-icon">Carrito</a>
+    <a routerLink="/carrito" id="cart-icon">
+      Carrito
+      <span class="cart-badge" *ngIf="carritoService.getCantidadItems() > 0">
+        {{carritoService.getCantidadItems()}}
+      </span>
+    </a>
   </div>
 </header>

@@ -9,7 +9,12 @@
 
   <div class="right-section">
     <a routerLink="/perfil">Perfil</a>
-    <a href="#" id="cart-icon">Carrito</a>
+    <a routerLink="/carrito" id="cart-icon">
+      Carrito
+      <span class="cart-badge" *ngIf="carritoService.getCantidadItems() > 0">
+        {{carritoService.getCantidadItems()}}
+      </span>
+    </a>
     <a href="#" (click)="cerrarSesion()">Cerrar sesión</a>
   </div>
 </header>

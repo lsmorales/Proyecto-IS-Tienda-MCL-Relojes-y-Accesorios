@@ -11,8 +11,8 @@
         <span class="product-price">{{ formatearPrecio(producto.precio) }}</span>
       </div>
     </div>
-    <button class="btn-agregar-carrito">
-      <i class="fas fa-cart-plus"></i> Añadir al carrito
+    <button class="btn-agregar-carrito" (click)="agregarAlCarrito(producto)">
+       <i class="fas fa-cart-plus"></i> Añadir al carrito
     </button>
   </div>
 
