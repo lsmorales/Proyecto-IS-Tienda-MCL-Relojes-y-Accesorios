@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { PagoService } from '../../servicios/pago.service';
+import { CarritoService } from '../../servicios/carrito.service';
 
 @Component({
   selector: 'app-registrar-pago',
@@ -12,7 +13,7 @@ import { PagoService } from '../../servicios/pago.service';
 })
 export class RegistrarPagoComponent {
   metodoSeleccionado: 'pago_movil' | 'transferencia' = 'pago_movil';
-  montoSistema: number = 250;
+  montoSistema: number = 0;
   referencia: string = '';
   usuario: string = 'usuario_demo';
 
@@ -23,7 +24,9 @@ export class RegistrarPagoComponent {
 
   imagenBase64: string = '';
 
-  constructor(private pagoService: PagoService) {}
+  constructor(private pagoService: PagoService, private carritoService: CarritoService) {
+    this.montoSistema = this.carritoService.calcularTotal();
+  }
 
   enviarPago() {
     const esValido = /^[0-9]{12,20}$/.test(this.referencia);
