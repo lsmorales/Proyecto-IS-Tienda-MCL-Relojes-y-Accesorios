@@ -1,7 +1,7 @@
 <div class="carrito-container">
   <div class="carrito-header">
     <h2>Tu Carrito de Compras</h2>
-    <span class="cantidad-items">{{productos.length}} items</span>
+    <span class="cantidad-items">{{ productos.length }} items</span>
   </div>
 
   <div *ngIf="productos.length === 0" class="carrito-vacio">
@@ -14,13 +14,29 @@
       <div *ngFor="let producto of productos" class="producto-carrito">
         <div class="producto-imagen">
           <img [src]="producto.imagen || 'assets/imagenes/default-product.png'" 
-               [alt]="producto.nombre">
+              [alt]="producto.nombre">
         </div>
+
         <div class="producto-info">
-          <h3>{{producto.nombre}}</h3>
-          <p>{{producto.descripcion}}</p>
-          <span class="producto-precio">{{producto.precio | currency:'USD':'symbol':'1.2-2'}}</span>
+          <h3>{{ producto.nombre }}</h3>
+          <p>{{ producto.descripcion }}</p>
+
+          <!-- Controles de cantidad -->
+<div class="producto-cantidad-control">
+  <label class="cantidad-label">Cantidades</label>
+  <div class="cantidad-box">
+    <button (click)="disminuirCantidad(producto.id)">−</button>
+    <span class="cantidad">{{ producto.cantidad }}</span>
+    <button (click)="incrementarCantidad(producto.id)">+</button>
+  </div>
+</div>
+
+          <!-- Precio individual multiplicado por cantidad -->
+          <span class="producto-precio">
+            {{ (producto.precio * (producto.cantidad || 1)) | currency:'EUR' }}
+          </span>
         </div>
+
         <button class="btn-eliminar" (click)="eliminarProducto(producto.id)">
           <i class="fas fa-trash-alt"></i> Eliminar
         </button>
@@ -28,7 +44,7 @@
     </div>
 
     <div class="carrito-total">
-      <h3>Total: {{calcularTotal() | currency:'USD':'symbol':'1.2-2'}}</h3>
+      <h3>Total: {{ calcularTotal() | currency:'EUR' }}</h3>
     </div>
 
     <div class="carrito-acciones">

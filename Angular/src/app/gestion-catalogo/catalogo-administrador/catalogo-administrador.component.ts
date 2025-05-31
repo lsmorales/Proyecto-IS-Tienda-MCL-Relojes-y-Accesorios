@@ -41,8 +41,13 @@ export class CatalogoAdministradorComponent implements OnInit {
     if (producto) {
       this.modoEdicion = true;
       this.productoEditadoId = producto.id;
-      this.nuevoProducto = { ...producto };
-    } else {
+      this.nuevoProducto = {
+  nombre: producto.nombre,
+  descripcion: producto.descripcion,
+  tipo: producto.tipo || '',
+  precio: producto.precio,
+  imagen: producto.imagen || 'assets/imagen-placeholder.jpg'
+};
       this.modoEdicion = false;
       this.productoEditadoId = null;
       this.nuevoProducto = {

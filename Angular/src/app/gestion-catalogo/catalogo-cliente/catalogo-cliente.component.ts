@@ -5,7 +5,6 @@ import { Producto } from '../../models/producto.model';
 import { ProductoService } from '../../servicios/producto.service';
 import { CarritoService } from '../../servicios/carrito.service';
 
-
 @Component({
   selector: 'app-catalogo-cliente',
   standalone: true,
@@ -32,8 +31,11 @@ export class CatalogoClienteComponent implements OnInit {
   formatearPrecio(precio: number): string {
     return precio.toFixed(2).replace('.', ',') + ' €';
   }
+
   agregarAlCarrito(producto: Producto): void {
-    this.carritoService.agregarProducto(producto);
+    const productoConCantidad = { ...producto, cantidad: 1 }; // añadimos la propiedad cantidad
+    this.carritoService.agregarProducto(productoConCantidad);
     alert(`${producto.nombre} añadido al carrito`);
   }
 }
+

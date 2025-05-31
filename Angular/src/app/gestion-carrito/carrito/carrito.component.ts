@@ -26,10 +26,35 @@ export class CarritoComponent {
 
   eliminarProducto(id: number): void {
     this.carritoService.eliminarProducto(id);
-    this.cargarCarrito(); // Recargar la lista
+    this.cargarCarrito();
   }
 
   calcularTotal(): number {
     return this.carritoService.calcularTotal();
   }
+
+  actualizarCantidad(id: number, nuevaCantidad: number): void {
+    if (nuevaCantidad < 1) return;
+    this.carritoService.actualizarCantidad(id, nuevaCantidad);
+    this.cargarCarrito();
+  }
+
+  getCantidadEnCarrito(productoId: number): number {
+  const carrito = this.carritoService.getCarrito();
+  const item = carrito.find(p => p.id === productoId);
+  return item?.cantidad ?? 0;
+}
+  incrementarCantidad(id: number): void {
+  this.carritoService.incrementarCantidad(id);
+  this.cargarCarrito();
+}
+
+disminuirCantidad(id: number): void {
+  this.carritoService.disminuirCantidad(id);
+  this.cargarCarrito();
+}
+
+formatearPrecio(precio: number): string {
+  return precio.toFixed(2).replace('.', ',') + ' €';
+}
 }
